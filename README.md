@@ -23,6 +23,7 @@ Boa sorte =)
 ## Instruções de execução
 ### Com o Node local
 - Primeiramente, clone o arquivo *.env.example* e remova o *.example* do nome do novo arquivo, deixando apenas o *.env*
+- Certifique-se de que o banco de dados está rodando com o comando `docker compose up mysqldb -d`
 - Certifique-se de ter um node compatível com a versão 18.15.0 usada no projeto
 - Execute o comando `npm install` para baixar todas as dependências
 - Execute o comando `npx prisma migrate dev` para rodar todas as migrations
