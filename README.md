@@ -28,7 +28,8 @@ Boa sorte =)
 - Execute o comando `npx prisma migrate dev` para rodar todas as migrations
 - Mantive o comando `npm start` ou `yarn start` para executar o projeto na porta 4568 por padrão
 ### Com Docker
-- Alternativamente **acrescentei um Dockerfile para o projeto**, que servirá como base para subir um container com a versão correta do NodeJS, junto com suas dependências e o banco mysql ao executar o comando `docker compose up -d`
+- Primeiramente, clone o arquivo *.env.example* e remova o *.example* do nome do novo arquivo, deixando apenas o *.env*
+- **Acrescentei um Dockerfile para o projeto**, que servirá como base para subir um container com a versão correta do NodeJS, junto com suas dependências e o banco mysql ao executar o comando `docker compose up -d`
 ## Como usar o endpoint
 A documentação do service pode ser acessada na url http://localhost:4568/docs. A doc contém detalhes sobre a estrutura da requisição e seu caminho.
 ## Executar testes unitários
