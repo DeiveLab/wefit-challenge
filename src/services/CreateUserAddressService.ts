@@ -3,12 +3,13 @@ import { UserAddress } from "../entities/UserAddress";
 import ServiceError from "../errors/ServiceError";
 import { stringHasOnlyNumbers } from "../utils/textValidators";
 import { IUsersRepository } from "../repositories/IUsersRepository";
+import { IUsersAddressRepository } from "../repositories/IUsersAddressRepository";
 
 @injectable()
 export class CreateUserAddressService {
     constructor(
         @inject('IUsersRepository') private usersRepository: IUsersRepository,
-        @inject('IUsersAddressRepository') private usersAddressRepository: IUsersRepository
+        @inject('IUsersAddressRepository') private usersAddressRepository: IUsersAddressRepository
     ) { }
 
     async execute({ zipCode, city, neighborhood, number, state, street, userId, complement }: UserAddress) {
