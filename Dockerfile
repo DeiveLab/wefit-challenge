@@ -10,6 +10,4 @@ COPY . .
 
 EXPOSE 4568
 
-RUN npx prisma migrate dev
-
 CMD [ "npm", "start" ]

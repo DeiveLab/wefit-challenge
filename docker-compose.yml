@@ -20,6 +20,7 @@ services:
       - mysqldb
     networks:
       - wefit-challenge
+    command: npx prisma migrate dev && npm run start
   wefit-challenge-tests:
     build: .
     container_name: wefit-challenge-tests
