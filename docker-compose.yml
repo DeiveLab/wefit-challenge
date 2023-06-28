@@ -1,0 +1,43 @@
+version: '3.8'
+
+networks:
+  wefit-challenge:
+    driver: bridge
+
+services:
+  wefit-challenge:
+    build: .
+    container_name: wefit-challenge
+    env_file: ./.env
+    environment:
+      - DATABASE_URL=mysql://root:${MYSQLDB_PASSWORD}@mysqldb:${MYSQLDB_PORT}/${MYSQLDB_DATABASE}?schema=public
+    ports:
+      - $PORT:4568
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - mysqldb
+    networks:
+      - wefit-challenge
+  wefit-challenge-tests:
+    build: .
+    container_name: wefit-challenge-tests
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run test
+  mysqldb:
+    platform: linux/x86_64
+    image: mysql:5.6
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQLDB_PASSWORD
+      - MYSQL_DATABASE=$MYSQLDB_DATABASE
+    ports:
+      - $MYSQLDB_PORT:3306
+    volumes:
+      - ./data/:/var/lib/mysql
+    networks:
+      - wefit-challenge

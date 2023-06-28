@@ -1,0 +1,142 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "WeFit Challenge API",
+        "description": "Se leu contrata",
+        "version": "1.0.0",
+        "contact": {
+            "email": "deivissonasantana@gmail.com"
+        }
+    },
+    "servers": [
+        {
+            "url": "http://localhost:4568",
+            "description": "Local server"
+        }
+    ],
+    "paths": {
+        "/users": {
+            "post": {
+                "summary": "Criar um usuário junto aos seus dados de endereço",
+                "description": "Essa rota cadastra usuários dos tipos vendedor e comprador, adicionando seus dados de endereço",
+                "tags": ["Users"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            },
+                            "examples": {
+                                "client": {
+                                    "value": {
+                                        "type": "client",
+                                        "cpf": "12345678910",
+                                        "name": "John Doe",
+                                        "email": "john@doe.com",
+                                        "cellphone": "12345678910",
+                                        "phone": "12345678910",
+                                        "address": {
+                                            "street": "Rua dos Bobos",
+                                            "number": "0",
+                                            "city": "São Paulo",
+                                            "state": "SP",
+                                            "country": "Brasil",
+                                            "zipCode": "12345678",
+                                            "neighborhood": "Vila do Chaves",
+                                            "complement": "Casa 2"
+                                        }
+                                    }
+                                },
+                                "supplier": {
+                                    "value": {
+                                        "type": "supplier",
+                                        "cnpj": "12345678910111",
+                                        "name": "John Doe",
+                                        "email": "john@doe.com",
+                                        "cellphone": "12345678910",
+                                        "phone": "12345678910",
+                                        "address": {
+                                            "street": "Rua dos Bobos",
+                                            "number": "0",
+                                            "city": "São Paulo",
+                                            "state": "SP",
+                                            "country": "Brasil",
+                                            "zipCode": "12345678",
+                                            "neighborhood": "Vila do Chaves",
+                                            "complement": "Casa 2"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components":{
+        "schemas": {
+            "User": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": ["client", "supplier"]
+                    },
+                    "cpf": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "CPF do usuário, apenas para usuários do tipo client"
+                    },
+                    "cnpj": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "CNPJ do usuário, apenas para usuários do tipo supplier"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "cellphone": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "object",
+                        "properties": {
+                            "street": {
+                                "type": "string"
+                            },
+                            "number": {
+                                "type": "string"
+                            },
+                            "city": {
+                                "type": "string"
+                            },
+                            "state": {
+                                "type": "string"
+                            },
+                            "country": {
+                                "type": "string"
+                            },
+                            "zipCode": {
+                                "type": "string"
+                            },
+                            "neighborhood": {
+                                "type": "string"
+                            },
+                            "complement": {
+                                "type": "string",
+                                "nullable": true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
