@@ -27,6 +27,7 @@ Boa sorte =)
 - Certifique-se de ter um node compatível com a versão 18.15.0 usada no projeto
 - Execute o comando `npm install` para baixar todas as dependências
 - Execute o comando `npx prisma migrate dev` para rodar todas as migrations
+- Execute o comando `npx prisma generate` para iniciar o prisma client
 - Mantive o comando `npm start` ou `yarn start` para executar o projeto na porta 4568 por padrão
 ### Com Docker
 - Primeiramente, clone o arquivo *.env.example* e remova o *.example* do nome do novo arquivo, deixando apenas o *.env*

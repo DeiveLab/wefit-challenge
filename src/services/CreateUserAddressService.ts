@@ -1,15 +1,14 @@
 import { inject, injectable } from "tsyringe";
 import { UserAddress } from "../entities/UserAddress";
 import ServiceError from "../errors/ServiceError";
-import { UsersAddressRepository } from "../repositories/impls/UsersAddressRepository";
-import { UsersRepository } from "../repositories/impls/UsersRepository";
 import { stringHasOnlyNumbers } from "../utils/textValidators";
+import { IUsersRepository } from "../repositories/IUsersRepository";
 
 @injectable()
 export class CreateUserAddressService {
     constructor(
-        @inject('IUsersRepository') private usersRepository: UsersRepository,
-        @inject('IUsersAddressRepository') private usersAddressRepository: UsersAddressRepository
+        @inject('IUsersRepository') private usersRepository: IUsersRepository,
+        @inject('IUsersAddressRepository') private usersAddressRepository: IUsersRepository
     ) { }
 
     async execute({ zipCode, city, neighborhood, number, state, street, userId, complement }: UserAddress) {
